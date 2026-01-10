@@ -6,11 +6,17 @@ Este repositorio es una demostración de como conectar Unity 3D con una base de 
 
 <br />
 
-<img src="./Metodos para conectar.png" alt="Metodos para conectar" />
+<img src="./Imagenes/Metodos para conectar.png" alt="Metodos para conectar" />
 
 <br />
 
 En el siguiente video se muestra todo el proceso de conexión
+
+(Simplemente un tutorial de Youtube)
+
+<img src="./Imagenes/YoutubeLogo.png" alt="Logo Youtube" width="150px" height="70px" />
+
+<img src="./Imagenes/manitoabajo.png" alt="Logo Youtube" width="50px" height="50px" />
 
 <br />
 

@@ -1,4 +1,4 @@
-# Conexión BD MySQL a Unity 3D con PHP
+# Conexión BD MySQL con Unity 3D usando PHP
 
 #### Información del repositorio
 

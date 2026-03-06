@@ -20,4 +20,4 @@ En el siguiente video se muestra todo el proceso de conexión
 
 <br />
 
-[![Explicación Unity](https://img.youtube.com/v1/AipMN27w8aU/0.jpg)](https://www.youtube.com/watch?v=AipMN27w8aU&list=PLoyXBMvwICoZF9zLkG3uFLAqX9uzuXrh_)
+[![Explicación Unity](https://www.youtube.com/playlist?list=PLoyXBMvwICoZF9zLkG3uFLAqX9uzuXrh_)](https://www.youtube.com/playlist?list=PLoyXBMvwICoZF9zLkG3uFLAqX9uzuXrh_)

@@ -2,23 +2,50 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class RegisterScript : MonoBehaviour
 {
     public InputField txtUsuarioRegistro;
-    public InputField txtPasswordRegistro;
+    public InputField txtPasswordRegistro;   
+
+    private PanelActive pnlActivar;
+    
+
+    private void Start()
+    {
+        pnlActivar = GetComponent<PanelActive>();
+    }
 
     public void RegistrarUsuario()
     {
-        StartCoroutine(Register());
+        bool valorDevuelto = validarUsuarioClaveIngresados();
+
+        if (valorDevuelto)
+            StartCoroutine(Register());
+        else
+        {
+            pnlActivar.setMensaje("FALTA INGRESAR USUARIO Y CONTRASEÑA");
+            pnlActivar.activePanel();
+            pnlActivar.setChangeColor(3);
+        }
+            
+    }
+
+    private bool validarUsuarioClaveIngresados()
+    {
+        return (txtPasswordRegistro.text != "" && txtUsuarioRegistro.text != "");
     }
 
     IEnumerator Register()
     {
-        string url = "http://localhost:8080/Unity3D-php/insertar.php?usuario_unity=" + txtUsuarioRegistro.text + "&password_unity=" + txtPasswordRegistro.text;
+        string url = "http://localhost:8080/Unity3D-php/insertar.php";
 
+        WWWForm form = new WWWForm();
+        form.AddField("usuario_unity", txtUsuarioRegistro.text);
+        form.AddField("password_unity", txtPasswordRegistro.text);
 
-        using (UnityWebRequest conexion = UnityWebRequest.Get(url))
+        using (UnityWebRequest conexion = UnityWebRequest.Post(url, form))
         {
             yield return conexion.SendWebRequest();
 
@@ -32,13 +59,19 @@ public class RegisterScript : MonoBehaviour
 
                 if (respuesta == "201")
                 {
-                    Debug.Log("Usuario creado");
+                    pnlActivar.setMensaje("FELICITACIONES, USUARIO CREADO CORRECTAMENTE");
+                    pnlActivar.activePanel();
+                    pnlActivar.setChangeColor(1);
                 }
 
                 if (respuesta == "409")
                 {
-                    Debug.Log("Usuario ya existe, no se puede crear");
-                }
+                    pnlActivar.setMensaje("NO ES POSIBLE CREAR EL USUARIO, PORQUE YA EXISTE");
+                    pnlActivar.activePanel();
+                    pnlActivar.setChangeColor(2);
+                }             
+                   
+                
             }
 
 

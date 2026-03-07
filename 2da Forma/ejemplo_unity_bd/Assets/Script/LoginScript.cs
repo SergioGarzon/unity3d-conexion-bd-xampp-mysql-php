@@ -17,10 +17,13 @@ public class LoginScript : MonoBehaviour
 
     IEnumerator Logueo()
     {
-        string url = "http://localhost:8080/Unity3D-php/consultar.php?usuario_unity=" + txtUsuario.text + "&password_unity=" + txtPassword.text;
+        string url = "http://localhost:8080/Unity3D-php/consultar.php";
 
+        WWWForm form = new WWWForm();
+        form.AddField("usuario_unity", txtUsuario.text);
+        form.AddField("password_unity", txtPassword.text);
 
-        using (UnityWebRequest conexion = UnityWebRequest.Get(url))
+        using (UnityWebRequest conexion = UnityWebRequest.Post(url, form))
         {
             yield return conexion.SendWebRequest();
 
